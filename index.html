@@ -214,12 +214,12 @@
         overflow: hidden
       }*/
       .swiper-pagination {
-        line-height: 30px; /* Match the height of the bullets */
+        line-height: 20px; 
       }
 
       .swiper-pagination-bullet {
-         width: 30px; /* Adjust size as needed */
-         height: 30px; /* Adjust size as needed */
+         width: 20px; /* Adjust size as needed */
+         height: 20px; /* Adjust size as needed */
       }
       .mobile-text-padding {
         padding-left: 0%; 
@@ -487,11 +487,25 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
    
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        let thumbnailContainers = document.querySelectorAll('.thumbnail-container');
+    
+        thumbnailContainers.forEach(function(container) {
+            let firstThumbnail = container.querySelector('.thumbnail');
+            if (firstThumbnail) {
+                let firstThumbnailWidth = firstThumbnail.offsetWidth;
+                let firstThumbnailHeight = firstThumbnail.offsetHeight;
+    
+                let allThumbnails = container.querySelectorAll('.thumbnail');
+                allThumbnails.forEach(function(thumbnail) {
+                    thumbnail.style.width = firstThumbnailWidth + 'px';
+                    thumbnail.style.height = firstThumbnailHeight + 'px';
+                });
+            }
+        });
+    });
 
-    // Call the function to adjust the height on page load
-    //adjustViewHeight();
-
-    //window.addEventListener('resize', adjustViewHeight);
     var swiper = new Swiper('#swiper-container', {
       slidesPerView: 1,
       spaceBetween: 10,
