@@ -560,8 +560,11 @@
         swiperContainer.classList.add('open');  // add 'open' class
         document.body.classList.add('blur');
         document.body.style.overflow = 'hidden';  // Prevent body scrolling
-        document.body.style.position = 'fixed';
-        // document.body.stlye.left = '50%';
+        if (window.innerWidth <= 1100) {
+          document.body.style.position = 'fixed';
+        }
+        //document.body.style.width = '100%';
+        // document.body.stlye.left = '0';
     
         swiper.removeAllSlides();
     
