@@ -96,6 +96,10 @@
       background-color: rgba(0,0,0,0.4);
       backdrop-filter: blur(5px);
     }
+    body.url-bar-hidden.blur::before {
+        height: calc(100% + 56px);  /* 56px is an approximation of the URL bar height */
+    }
+
 
     .swiper-container {
     /*
@@ -477,9 +481,22 @@
   
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
+    let initialHeight = window.innerHeight;
     function adjustViewHeight() {
+        // Adjust the height for potential URL bar hide/show
         document.documentElement.style.height = `${window.innerHeight}px`;
         document.body.style.height = `${window.innerHeight}px`;
+
+        // Check for URL bar visibility and adjust styles accordingly
+        if (window.innerHeight > initialHeight) {
+            // URL bar is hidden
+            document.body.classList.add('url-bar-hidden');
+        } else {
+            // URL bar is shown
+            document.body.classList.remove('url-bar-hidden');
+        }
+
+        initialHeight = window.innerHeight;
     }
 
     // Call the function to adjust the height on page load
