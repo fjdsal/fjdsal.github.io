@@ -561,6 +561,9 @@
       document.body.classList.add('blur');
       document.body.style.overflow = 'hidden';  // Prevent body scrolling
   
+      // Prevent touchmove event
+      document.body.addEventListener('touchmove', preventScroll, { passive: false });
+  
       swiper.removeAllSlides();
   
       for (var i = 0; i < gallery.length; i++) {
@@ -582,6 +585,9 @@
       swiperContainer.classList.remove('open');  // remove 'open' class
       document.body.classList.remove('blur');
       document.body.style.overflow = '';  // Restore body scrolling
+  
+      // Restore touchmove event
+      document.body.removeEventListener('touchmove', preventScroll, { passive: false });
     }
     
 
