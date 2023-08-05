@@ -547,20 +547,25 @@
       const swiperContainer = document.getElementById('swiper-container');
       swiperContainer.classList.add('open');  // add 'open' class
       document.body.classList.add('blur');
-
+  
+      // Prevent body scroll
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${window.scrollY}px`;
+  
       swiper.removeAllSlides();
-
+  
       for (var i = 0; i < gallery.length; i++) {
-        var slide = document.createElement('div');
-        slide.className = 'swiper-slide';
-        var img = document.createElement('img');
-        img.src = gallery[i];
-        slide.appendChild(img);
-        swiper.appendSlide(slide);
+          var slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          var img = document.createElement('img');
+          img.src = gallery[i];
+          slide.appendChild(img);
+          swiper.appendSlide(slide);
       }
-
+  
       if (startSlide) {
-        swiper.slideTo(startSlide, 0);
+          swiper.slideTo(startSlide, 0);
       }
     }
 
@@ -568,6 +573,13 @@
       const swiperContainer = document.getElementById('swiper-container');
       swiperContainer.classList.remove('open');  // remove 'open' class
       document.body.classList.remove('blur');
+  
+      // Restore body scroll
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
     
 
