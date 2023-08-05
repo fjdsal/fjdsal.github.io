@@ -267,8 +267,8 @@
   <table id="Speicher"></table>
 
   <!-- Tabelle mit Inhalt-->
-  <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center" summary="alles">
-  <tr><td width="90%">
+  <table width="70%" border="0" cellspacing="0" cellpadding="0" align="center" summary="alles">
+  <tr><td width="70%">
 
 
   <div align="center">
@@ -541,17 +541,19 @@
       metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
     }
     
-
+    let scrollYAtGalleryOpen = 0;
     function openGallery(gallery, startSlide) {
       event.preventDefault();
+  
+      // Store the current scroll position
+      scrollYAtGalleryOpen = window.scrollY;
+  
       const swiperContainer = document.getElementById('swiper-container');
       swiperContainer.classList.add('open');  // add 'open' class
-      document.body.classList.add('blur');
   
-      // Prevent body scroll
+      // Apply the fixed position with a top offset
       document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.top = `-${scrollYAtGalleryOpen}px`;
   
       swiper.removeAllSlides();
   
@@ -572,14 +574,10 @@
     function closeGallery() {
       const swiperContainer = document.getElementById('swiper-container');
       swiperContainer.classList.remove('open');  // remove 'open' class
-      document.body.classList.remove('blur');
   
-      // Restore body scroll
-      const scrollY = document.body.style.top;
+      // Reset the fixed position and scroll back to the original position
       document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      window.scrollTo(0, scrollYAtGalleryOpen);
     }
     
 
