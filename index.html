@@ -87,7 +87,7 @@
 
     body.blur::before {
       content: "";
-      height: 100%
+      
       position: fixed;
       top: 0;
       bottom: 0;
@@ -97,18 +97,7 @@
       background-color: rgba(0,0,0,0.4);
       backdrop-filter: blur(5px);
     }
-    body.url-bar-hidden.blur::before {
-      height: calc(100% + 56px);  /* 56px is an approximation of the URL bar height */
-      content: "";
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 999;
-      background-color: rgba(0,0,0,0.4);
-      backdrop-filter: blur(5px);
-    }
+
 
 
     .swiper-container {
