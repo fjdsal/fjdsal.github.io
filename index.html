@@ -487,24 +487,24 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
    
-    
     document.addEventListener("DOMContentLoaded", function() {
         let thumbnailContainers = document.querySelectorAll('.thumbnail-container');
     
         thumbnailContainers.forEach(function(container) {
             let firstThumbnail = container.querySelector('.thumbnail');
             if (firstThumbnail) {
-                let firstThumbnailWidth = firstThumbnail.offsetWidth;
                 let firstThumbnailHeight = firstThumbnail.offsetHeight;
     
                 let allThumbnails = container.querySelectorAll('.thumbnail');
                 allThumbnails.forEach(function(thumbnail) {
-                    thumbnail.style.width = firstThumbnailWidth + 'px';
                     thumbnail.style.height = firstThumbnailHeight + 'px';
+                    thumbnail.style.width = 'auto';
                 });
             }
         });
     });
+    
+
 
     var swiper = new Swiper('#swiper-container', {
       slidesPerView: 1,
