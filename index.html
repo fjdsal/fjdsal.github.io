@@ -513,9 +513,10 @@
       let metaViewport = document.querySelector('meta[name=viewport]');
       metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
     }
-
+    
 
     function openGallery(gallery, startSlide) {
+      event.preventDefault();
       const swiperContainer = document.getElementById('swiper-container');
       swiperContainer.classList.add('open');  // add 'open' class
       document.body.classList.add('blur');
