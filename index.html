@@ -529,6 +529,7 @@
 
 
     var swiper = new Swiper('#swiper-container', {
+      event.preventDefault();
       slidesPerView: 1,
       spaceBetween: 10,
       centeredSlides: true,
@@ -554,8 +555,6 @@
     
     let scrollYAtGalleryOpen = 0;
     function openGallery(gallery, startSlide) {
-        event.preventDefault();
-    
         const swiperContainer = document.getElementById('swiper-container');
         swiperContainer.classList.add('open');  // add 'open' class
         document.body.classList.add('blur');
@@ -576,13 +575,26 @@
             swiper.slideTo(startSlide, 0);
         }
     }
-
+    
     function closeGallery() {
         const swiperContainer = document.getElementById('swiper-container');
         swiperContainer.classList.remove('open');  // remove 'open' class
         document.body.classList.remove('blur');
         document.body.style.overflow = '';  // Restore body scrolling
     }
+    
+    // Event listener for opening the gallery
+    document.getElementById('openGalleryButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default behavior of the event
+        // Assuming galleryData is your image array and startSlideNumber is the initial slide
+        openGallery(galleryData, startSlideNumber);
+    }, { passive: false });
+    
+    // Event listener for closing the gallery
+    document.getElementById('closeGalleryButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default behavior of the event
+        closeGallery();
+    }, { passive: false });
 
     
 
