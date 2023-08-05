@@ -61,6 +61,11 @@
     h1 {
       padding: 20px 0;
     }
+    .content-wrapper {
+      max-width: 50vw;  /* You can adjust this value */
+      margin: 0 auto;  /* Center the content */
+      padding: 0 20px;  /* Give some space on the sides, especially for smaller screens */
+    }
 
     .thumbnail-container {
       display: flex;
@@ -181,6 +186,11 @@
     
     /* Hide the arrows on mobile devices */
     @media (max-width: 1100px) {
+      content-wrapper {
+        max-width: 90vw;  /* You can adjust this value */
+        margin: 0 auto;  /* Center the content */
+        padding: 0 20px;  /* Give some space on the sides, especially for smaller screens */
+      }
       .swiper-button-next, .swiper-button-prev {
         display: none;
       }
@@ -246,7 +256,8 @@
   </style>
 </head>
 
-<body> 
+<body>
+<div class="content-wrapper">
   <BODY style="margin: 0">
   <!--  Hier Mann Mitte-->
   <br>
@@ -544,44 +555,35 @@
     let scrollYAtGalleryOpen = 0;
     function openGallery(gallery, startSlide) {
       event.preventDefault();
-  
-      // Store the current scroll position
-      scrollYAtGalleryOpen = window.scrollY;
-  
       const swiperContainer = document.getElementById('swiper-container');
       swiperContainer.classList.add('open');  // add 'open' class
-  
-      // Apply the fixed position with a top offset
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollYAtGalleryOpen}px`;
-  
+      document.body.classList.add('blur');
+
       swiper.removeAllSlides();
-  
+
       for (var i = 0; i < gallery.length; i++) {
-          var slide = document.createElement('div');
-          slide.className = 'swiper-slide';
-          var img = document.createElement('img');
-          img.src = gallery[i];
-          slide.appendChild(img);
-          swiper.appendSlide(slide);
+        var slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        var img = document.createElement('img');
+        img.src = gallery[i];
+        slide.appendChild(img);
+        swiper.appendSlide(slide);
       }
-  
+
       if (startSlide) {
-          swiper.slideTo(startSlide, 0);
+        swiper.slideTo(startSlide, 0);
       }
     }
 
     function closeGallery() {
       const swiperContainer = document.getElementById('swiper-container');
       swiperContainer.classList.remove('open');  // remove 'open' class
-  
-      // Reset the fixed position and scroll back to the original position
-      document.body.style.position = '';
-      window.scrollTo(0, scrollYAtGalleryOpen);
+      document.body.classList.remove('blur');
     }
     
 
 
   </script>
+</div>
 </body>
 </html>
