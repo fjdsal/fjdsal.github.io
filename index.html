@@ -475,7 +475,15 @@
   
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
+    function adjustViewHeight() {
+        document.documentElement.style.height = `${window.innerHeight}px`;
+        document.body.style.height = `${window.innerHeight}px`;
+    }
 
+    // Call the function to adjust the height on page load
+    adjustViewHeight();
+
+    window.addEventListener('resize', adjustViewHeight);
     var swiper = new Swiper('#swiper-container', {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -520,6 +528,8 @@
       swiperContainer.classList.remove('open');  // remove 'open' class
       document.body.classList.remove('blur');
     }
+
+
   </script>
 </body>
 </html>
