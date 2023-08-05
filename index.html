@@ -491,7 +491,7 @@
     // Call the function to adjust the height on page load
     //adjustViewHeight();
 
-    window.addEventListener('resize', adjustViewHeight);
+    //window.addEventListener('resize', adjustViewHeight);
     var swiper = new Swiper('#swiper-container', {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -509,11 +509,7 @@
         prevEl: '.swiper-button-prev',
       },
       
-      on: {
-          slideChange: function() {
-              adjustViewHeight();
-          }
-      }
+
     });
     if (window.innerWidth <= 1100) {
       let metaViewport = document.querySelector('meta[name=viewport]');
