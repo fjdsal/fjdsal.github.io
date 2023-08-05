@@ -13,6 +13,8 @@
   <meta name="DC.Date" content="2014-12-01">
   <meta name="expires" content="1">
   <meta name="DC.Language" content="de">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
@@ -507,6 +509,11 @@
           }
       }
     });
+    if (window.innerWidth <= 1100) {
+      let metaViewport = document.querySelector('meta[name=viewport]');
+      metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
+    }
+
 
     function openGallery(gallery, startSlide) {
       const swiperContainer = document.getElementById('swiper-container');
@@ -534,6 +541,7 @@
       swiperContainer.classList.remove('open');  // remove 'open' class
       document.body.classList.remove('blur');
     }
+    
 
 
   </script>
