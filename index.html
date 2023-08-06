@@ -107,8 +107,6 @@
 
     .swiper-container {
    
-      transform-origin: bottom right;
-      transform: scale(0.1) translate(0%, 0%);  /* Adjust based on the initial position */
       transition: transform 0.5s ease-in-out;
        /*
       opacity: 0;
@@ -126,7 +124,7 @@
     }
 
     .swiper-container.open {
-      transform: scale(1) translate(-50%, -50%);
+      transform: scale(1) translate(-50%, -50%);      
       /*
       opacity: 1;
       visibility: visible;*/
@@ -614,10 +612,22 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     }
     
     let scrollYAtGalleryOpen = 0;
-    function openGallery(gallery, startSlide) {
+    function openGallery(gallery, startSlide, clickedElement) {
         event.preventDefault();
     
+        // Calculate position of clicked thumbnail relative to the viewport
+        let rect = clickedElement.getBoundingClientRect();
+        let x = rect.left + (rect.width / 2);
+        let y = rect.bottom - (rect.height / 2);  // taking center position
+    
         const swiperContainer = document.getElementById('swiper-container');
+        swiperContainer.style.transformOrigin = `${x}px ${y}px`;
+    
+        // Calculate initial scale based on thumbnail's dimensions
+        let initialScaleWidth = rect.width / window.innerWidth;
+        let initialScaleHeight = rect.height / window.innerHeight;
+        swiperContainer.style.transform = `scale(${initialScaleWidth}, ${initialScaleHeight})`;
+
         swiperContainer.classList.add('open');  // add 'open' class
         document.body.classList.add('blur');
         document.body.style.overflow = 'hidden';  // Prevent body scrolling
