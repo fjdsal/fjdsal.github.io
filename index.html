@@ -107,8 +107,9 @@
 
     .swiper-container {
    
-      transform: scale(0);
-      transition: transform 0.5s;
+      transform-origin: bottom right;
+      transform: scale(0.1) translate(0%, 0%);  /* Adjust based on the initial position */
+      transition: transform 0.5s ease-in-out;
        /*
       opacity: 0;
       visibility: hidden;
@@ -125,7 +126,7 @@
     }
 
     .swiper-container.open {
-      transform: scale(1);
+      transform: scale(1) translate(-50%, -50%);
       /*
       opacity: 1;
       visibility: visible;*/
