@@ -62,9 +62,9 @@
       padding: 20px 0;
     }
     .content-wrapper {
-      max-width: 60vw;  /* You can adjust this value */
-      margin: 0 auto;  /* Center the content */
-      padding: 0 20px;  /* Give some space on the sides, especially for smaller screens */
+      max-width: 60vw;
+      margin: 0 auto; 
+      padding: 0 20px;  
     }
 
     .thumbnail-container {
@@ -184,7 +184,7 @@
       background: white !important;
     }
     
-    /* Hide the arrows on mobile devices */
+  
     @media (max-width: 1100px) {
       body, table, td, tr, div, p, pre, h1, h3, h4, h5, ul, {
           font-size: 12px;
@@ -203,8 +203,8 @@
       }
       
       .content-wrapper {
-        max-width: 100vw;  /* You can adjust this value */
-        margin: 0 auto;  /* Center the content */
+        max-width: 100vw;
+        margin: 0 auto; 
 
       }
       .swiper-button-next, .swiper-button-prev {
@@ -568,24 +568,7 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
   
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-     /*
-    document.addEventListener("DOMContentLoaded", function() {
-        let thumbnailContainers = document.querySelectorAll('.thumbnail-container');
-    
-        thumbnailContainers.forEach(function(container) {
-            let firstThumbnail = container.querySelector('.thumbnail');
-            if (firstThumbnail) {
-                let firstThumbnailHeight = firstThumbnail.offsetHeight;
-    
-                let allThumbnails = container.querySelectorAll('.thumbnail');
-                allThumbnails.forEach(function(thumbnail) {
-                    thumbnail.style.height = firstThumbnailHeight + 'px';
-                    thumbnail.style.width = 'auto';
-                });
-            }
-        });
-    });
-    */
+
 
 
     var swiper = new Swiper('#swiper-container', {
@@ -594,7 +577,7 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       centeredSlides: true,
       slidesOffsetBefore: 0,
       slidesOffsetAfter: 0,
-      keyboard: { enabled: true, onlyInViewport: true }, // add this line      
+      keyboard: { enabled: true, onlyInViewport: true }, 
       mousewheel: { invert: false },
       pagination: {
         el: '.swiper-pagination',
@@ -620,14 +603,13 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
         const swiperContainer = document.getElementById('swiper-container');
         
 
-        swiperContainer.classList.add('open');  // add 'open' class
+        swiperContainer.classList.add('open');  /
         document.body.classList.add('blur');
-        document.body.style.overflow = 'hidden';  // Prevent body scrolling
+        document.body.style.overflow = 'hidden';
         if (window.innerWidth <= 1100) {
           document.body.style.position = 'fixed';
         }
-        //document.body.style.width = '100%';
-        // document.body.stlye.left = '0';
+
     
         swiper.removeAllSlides();
     
@@ -647,9 +629,9 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
 
     function closeGallery() {
         const swiperContainer = document.getElementById('swiper-container');
-        swiperContainer.classList.remove('open');  // remove 'open' class
+        swiperContainer.classList.remove('open');  
         document.body.classList.remove('blur');
-        document.body.style.overflow = '';  // Restore body scrolling
+        document.body.style.overflow = ''; 
         document.body.style.position = '';
 
     }
