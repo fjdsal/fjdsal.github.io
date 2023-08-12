@@ -440,7 +440,7 @@
     </div>
     <div class="thumbnail-block">
       <span>Kunsthalle Hamburg</span>
-      <img class="thumbnail" src="images/KunsthHamburg.jpg" alt="Installationen 2" onclick="openGallery(event installationen, 1)">
+      <img class="thumbnail" src="images/KunsthHamburg.jpg" alt="Installationen 2" onclick="openGallery(event, installationen, 1)">
     </div>
     <div class="thumbnail-block">
       <span>Kunsthaus Hamburg</span>
@@ -616,7 +616,7 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     }
     
     //let scrollYAtGalleryOpen = 0;
-    function openGallery(gallery, startSlide) {
+    function openGallery(event, gallery, startSlide) {
         event.preventDefault();
 
         const clickedThumbnail = event.currentTarget; // Use currentTarget to get the div
