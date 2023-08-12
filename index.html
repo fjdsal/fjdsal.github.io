@@ -514,15 +514,15 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
   <div class="thumbnail-container">
     <div class="thumbnail-block">
       <span>B&uuml;ro Hamburg</span>
-      <img class="thumbnail" src="images/Bildermiete_2.jpg" alt="Installation 1" onclick="openGallery(event, kunstmiete, 1)">
+      <img class="thumbnail" src="images/Bildermiete_2.jpg" alt="Installation 1" onclick="openGallery(kunstmiete, 0)">
     </div>
     <div class="thumbnail-block">
       <span>B&uuml;ro Berlin</span>
-      <img class="thumbnail" src="images/Bildermiete_SAP.jpg" alt="Installationen 2" onclick="openGallery(event, kunstmiete, 2)">
+      <img class="thumbnail" src="images/Bildermiete_SAP.jpg" alt="Installationen 2" onclick="openGallery(kunstmiete, 1)">
     </div>
     <div class="thumbnail-block">
       <span>B&uuml;ro M&uuml;nchen</span>
-      <img class="thumbnail" src="images/Bildermiete_3.jpg" alt="Installation 3" onclick="openGallery(event, kunstmiete, 3)">
+      <img class="thumbnail" src="images/Bildermiete_3.jpg" alt="Installation 3" onclick="openGallery(kunstmiete, 2)">
     </div>
     <script>
       var kunstmiete = ["images/Bildermiete_2.jpg","images/Bildermiete_SAP.jpg","images/Bildermiete_3.jpg"];
@@ -617,27 +617,15 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     
     //let scrollYAtGalleryOpen = 0;
     function openGallery(event, gallery, startSlide) {
-        event.preventDefault();
-
-        const clickedThumbnail = event.currentTarget; // Use currentTarget to get the div
-        const thumbnailRect = clickedThumbnail.getBoundingClientRect();
-
         const swiperContainer = document.getElementById('swiper-container');
-
-        // Set the initial position and size of the swiper container to match the thumbnail.
-        swiperContainer.style.position = 'fixed';
-        swiperContainer.style.top = `${thumbnailRect.top}px`;
-        swiperContainer.style.left = `${thumbnailRect.left}px`;
-        swiperContainer.style.width = `${thumbnailRect.width}px`;
-        swiperContainer.style.height = `${thumbnailRect.height}px`;
-
+    
         // Show the swiper container without animation.
         swiperContainer.style.transition = 'none';
         swiperContainer.classList.add('open');
-
+    
         // Trigger a reflow to apply the initial transformation before animating.
         void swiperContainer.offsetWidth;
-
+    
         // Restore the transition and animate to the normal position and size.
         swiperContainer.style.transition = 'all 0.4s ease-in-out';
         swiperContainer.style.top = '0';
@@ -649,8 +637,6 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
         if (window.innerWidth <= 1100) {
           document.body.style.position = 'fixed';
         }
-        //document.body.style.width = '100%';
-        // document.body.stlye.left = '0';
     
         swiper.removeAllSlides();
     
@@ -668,9 +654,9 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
         }
     }
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closeGallery();
-      }
+        if (event.key === 'Escape') {
+          closeGallery();
+        }
     });
     function closeGallery() {
         const swiperContainer = document.getElementById('swiper-container');
