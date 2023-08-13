@@ -21,72 +21,72 @@ if (window.innerWidth <= 1100) {
   let metaViewport = document.querySelector('meta[name=viewport]');
   metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
 }
+// Define a variable to store the clicked thumbnail's dimensions
+let thumbnailRect;
 
-var thumbnailRect;
 function openGallery(event, gallery, startSlide) {
   event.preventDefault();
 
+  // Get the clicked thumbnail and its dimensions
   const clickedThumbnail = event.currentTarget;
   thumbnailRect = clickedThumbnail.getBoundingClientRect();
 
+  // Get the swiper container and set its initial size and position
   const swiperContainer = document.getElementById('swiper-container');
-
   swiperContainer.style.width = `${thumbnailRect.width}px`;
   swiperContainer.style.height = `${thumbnailRect.height}px`;
-  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(1)`;
-  swiperContainer.style.transformOrigin = 'top left';
+  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px)`;
 
-  swiperContainer.style.transition = 'none';
+  // Add the 'open' class to make the gallery visible
   swiperContainer.classList.add('open');
 
-  void swiperContainer.offsetWidth; // Trigger reflow
-
-  swiperContainer.style.transition = 'transform 0.4s ease-in-out';
-  swiperContainer.style.transform = 'translate(0, 0) scale(1)';
-
-  document.body.classList.add('blur');
-  document.body.style.overflow = 'hidden';
-  if (window.innerWidth <= 1100) {
-    document.body.style.position = 'fixed';
+  // Initialize or update the swiper with the given gallery and start slide
+  if (swiper) {
+    swiper.update();
+    swiper.slideTo(startSlide, 0, false);
+  } else {
+    swiper = new Swiper('.swiper-container', {
+      // Swiper configuration here
+      initialSlide: startSlide,
+    });
   }
 
-  swiper.removeAllSlides();
-
-  for (var i = 0; i < gallery.length; i++) {
-    var slide = document.createElement('div');
-    slide.className = 'swiper-slide';
-    var img = document.createElement('img');
-    img.src = gallery[i];
-    slide.appendChild(img);
-    swiper.appendSlide(slide);
-  }
-
-  if (startSlide) {
-    swiper.slideTo(startSlide, 0);
-  }
+  // Optional: add a delay before animating to the full screen
+  setTimeout(() => {
+    swiperContainer.style.width = '100%';
+    swiperContainer.style.height = '100%';
+    swiperContainer.style.transform = 'translate(0, 0)';
+  }, 0);
 }
 
 function closeGallery() {
   const swiperContainer = document.getElementById('swiper-container');
 
+  // Define a function to be called when the transition ends
   function onTransitionEnd() {
-    swiperContainer.classList.remove('open');
-    document.body.classList.remove('blur');
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-
-    swiperContainer.style.transition = '';
-    swiperContainer.style.transform = '';
+    // Reset the swiper container's size and position
     swiperContainer.style.width = '';
     swiperContainer.style.height = '';
+    swiperContainer.style.transform = '';
 
+    // Remove the 'open' class to hide the gallery
+    swiperContainer.classList.remove('open');
+
+    // Other code to clean up after closing the gallery
+
+    // Remove the transition end listener
     swiperContainer.removeEventListener('transitionend', onTransitionEnd);
   }
 
+  // Set a transition for the transform property
   swiperContainer.style.transition = 'transform 0.4s ease-in-out';
-  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(1)`;
 
-  // Add a transition end event listener
+  // Animate back to the thumbnail's size and position
+  swiperContainer.style.width = `${thumbnailRect.width}px`;
+  swiperContainer.style.height = `${thumbnailRect.height}px`;
+  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px)`;
+
+  // Add a transition end listener
   swiperContainer.addEventListener('transitionend', onTransitionEnd);
 }
 
