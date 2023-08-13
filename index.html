@@ -620,13 +620,13 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
     }
     
-    let thumbnailRect;
+    var thumbnailRect;
+
     function openGallery(event, gallery, startSlide) {
         event.preventDefault();
 
         const clickedThumbnail = event.currentTarget; // Use currentTarget to get the div
-        const thumbnailRect = clickedThumbnail.getBoundingClientRect();
-
+        thumbnailRect = clickedThumbnail.getBoundingClientRect();
         const swiperContainer = document.getElementById('swiper-container');
 
         // Set the initial position and size of the swiper container to match the thumbnail.
