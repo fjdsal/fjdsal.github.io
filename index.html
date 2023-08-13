@@ -92,7 +92,6 @@
 
     body.blur::before {
       content: "";
-      
       position: fixed;
       top: 0;
       bottom: 0;
@@ -101,7 +100,9 @@
       z-index: 999;
       background-color: rgba(0,0,0,0.6);
       backdrop-filter: blur(5px);
-    }
+      transition: background-color 0.4s ease-in-out, backdrop-filter 0.4s ease-in-out; /* Add this line */
+}
+
 
 
 
