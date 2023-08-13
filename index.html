@@ -440,19 +440,19 @@
     <div class="thumbnail-container">
     <div class="thumbnail-block">
       <span>Gm&uuml;nd &Ouml;sterreich</span>
-      <img class="thumbnail" src="images/gmuend1.jpg" alt="Installation 1" onclick="openGallery(event, installationen, 1)">
+      <img class="thumbnail" src="images/gmuend1.jpg" alt="Installation 1" onclick="openGallery(event, installationen, 0)">
     </div>
     <div class="thumbnail-block">
       <span>Kunsthalle Hamburg</span>
-      <img class="thumbnail" src="images/KunsthHamburg.jpg" alt="Installationen 2" onclick="openGallery(event, installationen, 2)">
+      <img class="thumbnail" src="images/KunsthHamburg.jpg" alt="Installationen 2" onclick="openGallery(event, installationen, 1)">
     </div>
     <div class="thumbnail-block">
       <span>Kunsthaus Hamburg</span>
-      <img class="thumbnail" src="images/MehrZellig1.jpg" alt="Installation 3" onclick="openGallery(event, installationen, 3)">
+      <img class="thumbnail" src="images/MehrZellig1.jpg" alt="Installation 3" onclick="openGallery(event, installationen, 2)">
     </div>
     <div class="thumbnail-block">
       <span>Westwerk Hamburg</span>
-      <img class="thumbnail" src="images/shift.jpg" alt="Installation 4" onclick="openGallery(event, installationen, 4)">
+      <img class="thumbnail" src="images/shift.jpg" alt="Installation 4" onclick="openGallery(event, installationen, 3)">
     </div>
     <script>
       var installationen = ["images/gmuend1.jpg","images/KunsthHamburg.jpg","images/MehrZellig1.jpg","images/shift.jpg"];
@@ -518,15 +518,15 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
   <div class="thumbnail-container">
     <div class="thumbnail-block">
       <span>B&uuml;ro Hamburg</span>
-      <img class="thumbnail" src="images/Bildermiete_2.jpg" alt="Installation 1" onclick="openGallery(event, kunstmiete, 1)">
+      <img class="thumbnail" src="images/Bildermiete_2.jpg" alt="Installation 1" onclick="openGallery(event, kunstmiete, 0)">
     </div>
     <div class="thumbnail-block">
       <span>B&uuml;ro Berlin</span>
-      <img class="thumbnail" src="images/Bildermiete_SAP.jpg" alt="Installationen 2" onclick="openGallery(event, kunstmiete, 2)">
+      <img class="thumbnail" src="images/Bildermiete_SAP.jpg" alt="Installationen 2" onclick="openGallery(event, kunstmiete, 1)">
     </div>
     <div class="thumbnail-block">
       <span>B&uuml;ro M&uuml;nchen</span>
-      <img class="thumbnail" src="images/Bildermiete_3.jpg" alt="Installation 3" onclick="openGallery(event, kunstmiete, 3)">
+      <img class="thumbnail" src="images/Bildermiete_3.jpg" alt="Installation 3" onclick="openGallery(event, kunstmiete, 2)">
     </div>
     <script>
       var kunstmiete = ["images/Bildermiete_2.jpg","images/Bildermiete_SAP.jpg","images/Bildermiete_3.jpg"];
@@ -579,7 +579,7 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     var swiper = new Swiper('#swiper-container', {
       slidesPerView: 1,
       spaceBetween: 10,
-      loop: true,
+      loop: false,
       centeredSlides: true,
       slidesOffsetBefore: 0,
       slidesOffsetAfter: 0,
