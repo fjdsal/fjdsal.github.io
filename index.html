@@ -14,7 +14,7 @@
   <meta name="expires" content="1">
   <meta name="DC.Language" content="de">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="images/mann.ico" type="image/x-icon">
+  
 
 
 
@@ -707,6 +707,54 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
 
 
   </script>
+
+
+
+  <script>
+        setTimeout(() => {
+          var favicon_video_image_counter = 0;
+          var favicon_video_icon_tag = document.querySelector("link[rel='icon']");
+          var favicon_video_images = [
+      "https://favicongenerator.s3.amazonaws.com/0987bdb235cc6.png","https://favicongenerator.s3.amazonaws.com/5f07c716ebb7f.png","https://favicongenerator.s3.amazonaws.com/5e66e811cd73c.png","https://favicongenerator.s3.amazonaws.com/5b9eb8b5ff2e2.png"];
+          async function favicon_video_to_data_url(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+              var reader = new FileReader();
+              reader.onloadend = function () {
+                callback(reader.result);
+              };
+              reader.readAsDataURL(xhr.response);
+            };
+            xhr.open("GET", url);
+            xhr.responseType = "blob";
+            xhr.send();
+          }
+      
+          var favicon_video_loaded_images = [];
+      
+          favicon_video_images.map((url, idx) => {
+            favicon_video_to_data_url(url, function (dataUrl) {
+              favicon_video_loaded_images[idx] = dataUrl;
+            });
+          });
+      
+          setInterval(function () {
+            if(favicon_video_loaded_images[favicon_video_image_counter]) {
+              favicon_video_icon_tag.href = favicon_video_loaded_images[
+                favicon_video_image_counter
+              ].replace("application/octet-stream", "image/png");
+            }
+            if (
+              favicon_video_image_counter ==
+              favicon_video_loaded_images.length - 1
+            )
+              favicon_video_image_counter = 0;
+            else favicon_video_image_counter++;
+          }, 100);
+        }, 2000);
+      </script>
+
+  
 </div>
 </body>
 </html>
