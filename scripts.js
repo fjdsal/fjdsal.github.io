@@ -24,8 +24,9 @@
       metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
     }
         
-    var thumbnailRect;
-    function openGallery(event, gallery, startSlide) {
+var thumbnailRect;
+
+function openGallery(event, gallery, startSlide) {
   event.preventDefault();
 
   const clickedThumbnail = event.currentTarget;
@@ -33,21 +34,23 @@
 
   const swiperContainer = document.getElementById('swiper-container');
 
-  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
+  const scaleX = thumbnailRect.width / window.innerWidth;
+  const scaleY = thumbnailRect.height / window.innerHeight;
 
-  // Show the swiper container without animation
+  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${scaleX}, ${scaleY})`;
+  swiperContainer.style.transformOrigin = 'top left';
+
   swiperContainer.style.transition = 'none';
   swiperContainer.classList.add('open');
 
-  // Trigger a reflow to apply the initial transformation before animating
   void swiperContainer.offsetWidth;
 
-  // Restore the transition and animate to the normal position and size
   swiperContainer.style.transition = 'transform 0.4s ease-in-out';
   swiperContainer.style.transform = 'translate(0, 0) scale(1, 1)';
 
   document.body.classList.add('blur');
   document.body.style.overflow = 'hidden';
+
   if (window.innerWidth <= 1100) {
     document.body.style.position = 'fixed';
   }
@@ -71,27 +74,25 @@
 function closeGallery() {
   const swiperContainer = document.getElementById('swiper-container');
 
-  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
+  const scaleX = thumbnailRect.width / window.innerWidth;
+  const scaleY = thumbnailRect.height / window.innerHeight;
 
-  // Function to handle the transition end and cleanup
   function onTransitionEnd() {
     swiperContainer.classList.remove('open');
     document.body.classList.remove('blur');
     document.body.style.overflow = '';
     document.body.style.position = '';
 
-    // Reset styles
     swiperContainer.style.transition = '';
     swiperContainer.style.transform = '';
+    swiperContainer.style.transformOrigin = '';
 
     swiperContainer.removeEventListener('transitionend', onTransitionEnd);
   }
 
-  // Add a transition end event listener
   swiperContainer.addEventListener('transitionend', onTransitionEnd);
-
-  // Start the animation
   swiperContainer.style.transition = 'transform 0.4s ease-in-out';
+  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${scaleX}, ${scaleY})`;
 }
 
 document.addEventListener('keydown', function (event) {
