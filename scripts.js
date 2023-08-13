@@ -23,7 +23,6 @@ if (window.innerWidth <= 1100) {
 }
 
 var thumbnailRect;
-
 function openGallery(event, gallery, startSlide) {
   event.preventDefault();
 
@@ -34,7 +33,7 @@ function openGallery(event, gallery, startSlide) {
 
   swiperContainer.style.width = `${thumbnailRect.width}px`;
   swiperContainer.style.height = `${thumbnailRect.height}px`;
-  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px)`;
+  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(1)`;
   swiperContainer.style.transformOrigin = 'top left';
 
   swiperContainer.style.transition = 'none';
@@ -42,10 +41,8 @@ function openGallery(event, gallery, startSlide) {
 
   void swiperContainer.offsetWidth; // Trigger reflow
 
-  swiperContainer.style.transition = 'transform 0.4s ease-in-out, width 0.4s ease-in-out, height 0.4s ease-in-out';
-  swiperContainer.style.transform = 'translate(0, 0)';
-  swiperContainer.style.width = '100%';
-  swiperContainer.style.height = '100%';
+  swiperContainer.style.transition = 'transform 0.4s ease-in-out';
+  swiperContainer.style.transform = 'translate(0, 0) scale(1)';
 
   document.body.classList.add('blur');
   document.body.style.overflow = 'hidden';
@@ -86,12 +83,11 @@ function closeGallery() {
     swiperContainer.removeEventListener('transitionend', onTransitionEnd);
   }
 
-  swiperContainer.style.transition = 'transform 0.4s ease-in-out, width 0.4s ease-in-out, height 0.4s ease-in-out';
-  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px)`;
-  swiperContainer.style.width = `${thumbnailRect.width}px`;
-  swiperContainer.style.height = `${thumbnailRect.height}px`;
+  swiperContainer.style.transition = 'transform 0.4s ease-in-out';
+  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(1)`;
 
   // Add a transition end event listener
   swiperContainer.addEventListener('transitionend', onTransitionEnd);
 }
+
 
