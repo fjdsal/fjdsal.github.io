@@ -575,25 +575,6 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
   
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-     /*
-    document.addEventListener("DOMContentLoaded", function() {
-        let thumbnailContainers = document.querySelectorAll('.thumbnail-container');
-    
-        thumbnailContainers.forEach(function(container) {
-            let firstThumbnail = container.querySelector('.thumbnail');
-            if (firstThumbnail) {
-                let firstThumbnailHeight = firstThumbnail.offsetHeight;
-    
-                let allThumbnails = container.querySelectorAll('.thumbnail');
-                allThumbnails.forEach(function(thumbnail) {
-                    thumbnail.style.height = firstThumbnailHeight + 'px';
-                    thumbnail.style.width = 'auto';
-                });
-            }
-        });
-    });
-    */
-
 
     var swiper = new Swiper('#swiper-container', {
       slidesPerView: 1,
@@ -680,25 +661,37 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     });
     function closeGallery() {
         const swiperContainer = document.getElementById('swiper-container');
+      
+        // Function to handle the transition end and cleanup
+        function onTransitionEnd() {
+            swiperContainer.classList.remove('open');
+            document.body.classList.remove('blur');
+            document.body.style.overflow = '';  // Restore body scrolling
+            document.body.style.position = '';
         
-        // Set the final thumbnail's dimensions and position
-        swiperContainer.style.top = `${thumbnailRect.top}px`;
-        swiperContainer.style.left = `${thumbnailRect.left}px`;
-        swiperContainer.style.width = `${thumbnailRect.width}px`;
-        swiperContainer.style.height = `${thumbnailRect.height}px`;
-      
-        // Add a transition end event listener to remove the 'open' class once the transition is done
-        swiperContainer.addEventListener('transitionend', function() {
-          swiperContainer.classList.remove('open');
-          document.body.classList.remove('blur');
-          document.body.style.overflow = '';  // Restore body scrolling
-          document.body.style.position = '';
-          swiperContainer.style.opacity = '0'; // Match the opacity in the .swiper-container class
-        }, { once: true }); // Remove the event listener after it's been called
-      
-        // Start the animation
-        swiperContainer.style.transition = 'all 0.4s ease-in-out';
-        swiperContainer.style.opacity = '0'; // Animate opacity
+            // Reset styles
+            swiperContainer.style.transition = '';
+            swiperContainer.style.opacity = '';
+            swiperContainer.style.top = '';
+            swiperContainer.style.left = '';
+            swiperContainer.style.width = '';
+            swiperContainer.style.height = '';
+        
+            swiperContainer.removeEventListener('transitionend', onTransitionEnd);
+          }
+        
+          // Set the final thumbnail's dimensions and position
+          swiperContainer.style.top = `${thumbnailRect.top}px`;
+          swiperContainer.style.left = `${thumbnailRect.left}px`;
+          swiperContainer.style.width = `${thumbnailRect.width}px`;
+          swiperContainer.style.height = `${thumbnailRect.height}px`;
+        
+          // Add a transition end event listener
+          swiperContainer.addEventListener('transitionend', onTransitionEnd);
+        
+          // Start the animation
+          swiperContainer.style.transition = 'all 0.4s ease-in-out';
+          swiperContainer.style.opacity = '0'; // Animate opacity
     }
 
     
