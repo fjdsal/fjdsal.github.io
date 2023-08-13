@@ -99,7 +99,7 @@
       background-color: rgba(0,0,0,0);
       backdrop-filter: blur(0px);
       opacity: 0;
-      transition: background-color 0.1s, backdrop-filter 0.1s, opacity 0.1s;
+      transition: background-color 0.4s, backdrop-filter 0.4s, opacity 0.4s;
       pointer-events: none; /* Ensures that the overlay does not block interactions when hidden */
     }
     
@@ -684,7 +684,8 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       swiperContainer.style.left = `${thumbnailRect.left}px`;
       swiperContainer.style.width = `${thumbnailRect.width}px`;
       swiperContainer.style.height = `${thumbnailRect.height}px`;
-    
+      
+      overlay.style.transitionDuration = '0.1s'; // Adjust this value as needed
       // Add a transition end event listener
       swiperContainer.addEventListener('transitionend', onTransitionEnd);
     
