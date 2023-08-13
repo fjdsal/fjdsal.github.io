@@ -599,8 +599,11 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     
       const swiperContainer = document.getElementById('swiper-container');
     
-      // Use transform with translate3d and scale for hardware acceleration
-      swiperContainer.style.transform = `translate3d(${thumbnailRect.left}px, ${thumbnailRect.top}px, 0) scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
+      // Set the transformation origin to the clicked thumbnail
+      swiperContainer.style.transformOrigin = `${thumbnailRect.left}px ${thumbnailRect.top}px`;
+    
+      // Set the initial scale based on the thumbnail's size
+      swiperContainer.style.transform = `scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
     
       // Show the swiper container without animation
       swiperContainer.style.transition = 'none';
@@ -611,7 +614,7 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     
       // Restore the transition and animate to the normal position and size
       swiperContainer.style.transition = 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out';
-      swiperContainer.style.transform = 'translate3d(0, 0, 0) scale(1, 1)';
+      swiperContainer.style.transform = 'scale(1, 1)';
     
       document.body.classList.add('blur');
       document.body.style.overflow = 'hidden';
@@ -635,12 +638,6 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       }
     }
     
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closeGallery();
-      }
-    });
-    
     function closeGallery() {
       const swiperContainer = document.getElementById('swiper-container');
     
@@ -655,12 +652,16 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
         swiperContainer.style.transition = '';
         swiperContainer.style.opacity = '';
         swiperContainer.style.transform = '';
+        swiperContainer.style.transformOrigin = '';
     
         swiperContainer.removeEventListener('transitionend', onTransitionEnd);
       }
     
-      // Set the final thumbnail's dimensions and position using transform
-      swiperContainer.style.transform = `translate3d(${thumbnailRect.left}px, ${thumbnailRect.top}px, 0) scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
+      // Set the transformation origin to the clicked thumbnail
+      swiperContainer.style.transformOrigin = `${thumbnailRect.left}px ${thumbnailRect.top}px`;
+    
+      // Set the final scale based on the thumbnail's size
+      swiperContainer.style.transform = `scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
     
       // Add a transition end event listener
       swiperContainer.addEventListener('transitionend', onTransitionEnd);
@@ -670,7 +671,6 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       swiperContainer.style.opacity = '0';
     }
 
-    
 
 
   </script>
