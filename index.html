@@ -588,7 +588,7 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       let metaViewport = document.querySelector('meta[name=viewport]');
       metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
     }
-    
+        
     var thumbnailRect;
     
     function openGallery(event, gallery, startSlide) {
@@ -599,8 +599,8 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     
       const swiperContainer = document.getElementById('swiper-container');
     
-      // Set the transformation origin to the clicked thumbnail
-      swiperContainer.style.transformOrigin = `${thumbnailRect.left}px ${thumbnailRect.top}px`;
+      // Set the transformation origin to the center of the clicked thumbnail
+      swiperContainer.style.transformOrigin = `${thumbnailRect.left + thumbnailRect.width / 2}px ${thumbnailRect.top + thumbnailRect.height / 2}px`;
     
       // Set the initial scale based on the thumbnail's size
       swiperContainer.style.transform = `scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
@@ -657,8 +657,8 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
         swiperContainer.removeEventListener('transitionend', onTransitionEnd);
       }
     
-      // Set the transformation origin to the clicked thumbnail
-      swiperContainer.style.transformOrigin = `${thumbnailRect.left}px ${thumbnailRect.top}px`;
+      // Set the transformation origin to the center of the clicked thumbnail
+      swiperContainer.style.transformOrigin = `${thumbnailRect.left + thumbnailRect.width / 2}px ${thumbnailRect.top + thumbnailRect.height / 2}px`;
     
       // Set the final scale based on the thumbnail's size
       swiperContainer.style.transform = `scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
@@ -670,6 +670,13 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       swiperContainer.style.transition = 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out';
       swiperContainer.style.opacity = '0';
     }
+    
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeGallery();
+      }
+    });
+
 
 
 
