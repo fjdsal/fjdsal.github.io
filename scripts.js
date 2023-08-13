@@ -1,29 +1,27 @@
+var swiper = new Swiper('#swiper-container', {
+  slidesPerView: 1,
+  spaceBetween: 10,
+  loop: false,
+  centeredSlides: true,
+  slidesOffsetBefore: 0,
+  slidesOffsetAfter: 0,
+  keyboard: { enabled: true, onlyInViewport: true }, 
+  mousewheel: { invert: false },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
 
-    var swiper = new Swiper('#swiper-container', {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      loop: false,
-      centeredSlides: true,
-      slidesOffsetBefore: 0,
-      slidesOffsetAfter: 0,
-      keyboard: { enabled: true, onlyInViewport: true }, // add this line      
-      mousewheel: { invert: false },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      
+if (window.innerWidth <= 1100) {
+  let metaViewport = document.querySelector('meta[name=viewport]');
+  metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
+}
 
-    });
-    if (window.innerWidth <= 1100) {
-      let metaViewport = document.querySelector('meta[name=viewport]');
-      metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
-    }
-        
 var thumbnailRect;
 
 function openGallery(event, gallery, startSlide) {
@@ -33,9 +31,8 @@ function openGallery(event, gallery, startSlide) {
   thumbnailRect = clickedThumbnail.getBoundingClientRect();
 
   const swiperContainer = document.getElementById('swiper-container');
-
-  const scaleX = thumbnailRect.width / window.innerWidth;
-  const scaleY = thumbnailRect.height / window.innerHeight;
+  const scaleX = thumbnailRect.width / swiperContainer.offsetWidth;
+  const scaleY = thumbnailRect.height / swiperContainer.offsetHeight;
 
   swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${scaleX}, ${scaleY})`;
   swiperContainer.style.transformOrigin = 'top left';
@@ -50,7 +47,6 @@ function openGallery(event, gallery, startSlide) {
 
   document.body.classList.add('blur');
   document.body.style.overflow = 'hidden';
-
   if (window.innerWidth <= 1100) {
     document.body.style.position = 'fixed';
   }
@@ -73,9 +69,8 @@ function openGallery(event, gallery, startSlide) {
 
 function closeGallery() {
   const swiperContainer = document.getElementById('swiper-container');
-
-  const scaleX = thumbnailRect.width / window.innerWidth;
-  const scaleY = thumbnailRect.height / window.innerHeight;
+  const scaleX = thumbnailRect.width / swiperContainer.offsetWidth;
+  const scaleY = thumbnailRect.height / swiperContainer.offsetHeight;
 
   function onTransitionEnd() {
     swiperContainer.classList.remove('open');
@@ -100,4 +95,3 @@ document.addEventListener('keydown', function (event) {
     closeGallery();
   }
 });
-
