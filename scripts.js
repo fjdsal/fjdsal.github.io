@@ -31,19 +31,21 @@ function openGallery(event, gallery, startSlide) {
   thumbnailRect = clickedThumbnail.getBoundingClientRect();
 
   const swiperContainer = document.getElementById('swiper-container');
-  const scaleX = thumbnailRect.width / swiperContainer.offsetWidth;
-  const scaleY = thumbnailRect.height / swiperContainer.offsetHeight;
 
-  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${scaleX}, ${scaleY})`;
+  swiperContainer.style.width = `${thumbnailRect.width}px`;
+  swiperContainer.style.height = `${thumbnailRect.height}px`;
+  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px)`;
   swiperContainer.style.transformOrigin = 'top left';
 
   swiperContainer.style.transition = 'none';
   swiperContainer.classList.add('open');
 
-  void swiperContainer.offsetWidth;
+  void swiperContainer.offsetWidth; // Trigger reflow
 
-  swiperContainer.style.transition = 'transform 0.4s ease-in-out';
-  swiperContainer.style.transform = 'translate(0, 0) scale(1, 1)';
+  swiperContainer.style.transition = 'transform 0.4s ease-in-out, width 0.4s ease-in-out, height 0.4s ease-in-out';
+  swiperContainer.style.transform = 'translate(0, 0)';
+  swiperContainer.style.width = '100%';
+  swiperContainer.style.height = '100%';
 
   document.body.classList.add('blur');
   document.body.style.overflow = 'hidden';
@@ -69,8 +71,6 @@ function openGallery(event, gallery, startSlide) {
 
 function closeGallery() {
   const swiperContainer = document.getElementById('swiper-container');
-  const scaleX = thumbnailRect.width / swiperContainer.offsetWidth;
-  const scaleY = thumbnailRect.height / swiperContainer.offsetHeight;
 
   function onTransitionEnd() {
     swiperContainer.classList.remove('open');
@@ -80,18 +80,18 @@ function closeGallery() {
 
     swiperContainer.style.transition = '';
     swiperContainer.style.transform = '';
-    swiperContainer.style.transformOrigin = '';
+    swiperContainer.style.width = '';
+    swiperContainer.style.height = '';
 
     swiperContainer.removeEventListener('transitionend', onTransitionEnd);
   }
 
+  swiperContainer.style.transition = 'transform 0.4s ease-in-out, width 0.4s ease-in-out, height 0.4s ease-in-out';
+  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px)`;
+  swiperContainer.style.width = `${thumbnailRect.width}px`;
+  swiperContainer.style.height = `${thumbnailRect.height}px`;
+
+  // Add a transition end event listener
   swiperContainer.addEventListener('transitionend', onTransitionEnd);
-  swiperContainer.style.transition = 'transform 0.4s ease-in-out';
-  swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${scaleX}, ${scaleY})`;
 }
 
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') {
-    closeGallery();
-  }
-});
