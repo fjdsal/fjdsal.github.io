@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="google-site-verification" content="C6HMgWjGyu5gow0REjcFQb81zD3tgW6ozvEKkSmetlE" />
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <title>Marie Anne Jakob, K&uuml;nstlerin, &Ouml;lbilder, Illustrationen, Zeichnungen, Installationen, Kunstwerke zur Miete, Bildermiete, Bildmiete</title>
+  <meta name="description" content="Die K&uuml;nstlerin pr&auml;sentiert &Ouml;lbilder, Aquarelle, Installationen, Zeichnungen, Kunstmiete und Bilder zum Mieten">
+  <meta name="keywords" content="Bildermiete, Bildervermietung, Kunstmiete, Kunstvermietung, Kunst mieten, Mietkunst, Kunst und Kultur, Malererin, Maler, Oel, Oelbilder, Bilder, Installation, Konzept, K&uuml;nstler, bildende Kunst, Kultur, Meister, Aquarelle, Zeichnungen, Tiere, Pflanzen">
+  <meta name="copyright" content="Marie Anne Jakob, m_at_majakob.de">
+  <meta name="page-topic" content="Kultur, Kunst, K&uuml;stler, Kuenstler, Artist, Malerin, Maler, Illustratorin, Illustrator, Bildermiete, Kunstvermietung, Kunst mieten, Mietkunst">
+  <meta name="publisher" content="Frank Jakob">
+  <meta name="DC.Date" content="2014-12-01">
+  <meta name="expires" content="1">
+  <meta name="DC.Language" content="de">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/gif" href="images/mann.gif">
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <style>
+
+    body,table,td,tr,div,p,pre,h1,h2,h3,h4,h5,ul {
+      font-weight:100; 
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    }
+    body,td,div,p,pre,ul {font-weight:100; font-size: 13px;}
+
+    h0 {font-weight:bold; font-size: 30px; color:#FF0000}
+    h1 {font-weight:100; font-size: 18px;}
+    h2 {font-weight:100; font-size: 16px;}
+    h3 {font-weight:100; font-size: 13px;}
+    h4 {font-weight:100; font-size: 11px;}
+    h4 {font-weight:100; font-size: 9px;}
+    h5 {font-weight:100; font-size: 8px;}
+    h6 {font-weight:bold; font-size: 30px; color:#FF0000}
+
+    .small {font-size: 12px;}
+    .mini {	font-size: 11px;}
+    .minimini {font-size: 10px;}
+
+    a {	font-size: 13px; text-decoration: none; font-weight : 100;}
+    a:link {color:#0000FF}
+    a:visited {color:#808080}
+    a:active {color:#00FF00}
+    a:hover{color: #FF0000;}
+
+    body {background: white}
+
+
+
+  
+    html, body {
+      height: 100%;
+      overflow: auto;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      padding: 20px 0;
+    }
+    .content-wrapper {
+      max-width: 60vw;  /* You can adjust this value */
+      margin: 0 auto;  /* Center the content */
+      padding: 0 20px;  /* Give some space on the sides, especially for smaller screens */
+    }
+
+    .thumbnail-container {
+      display: flex;
+      flex-wrap: wrap; 
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .thumbnail-block {
+      position: relative;
+      margin-top: 30px;
+    }
+
+    .thumbnail-block span {
+      position: absolute;
+      /* top: -20px; */
+      bottom: 102%;
+      left: 50%;
+      width: 105%;
+      transform: translateX(-50%);
+      color: #000;
+    }
+    #overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background-color: rgba(0,0,0,0);
+      backdrop-filter: blur(0px);
+      opacity: 0;
+      transition: background-color 0.4s, backdrop-filter 0.4s, opacity 0.4s;
+      pointer-events: none; /* Ensures that the overlay does not block interactions when hidden */
+    }
+    
+    body.blur #overlay {
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
+      opacity: 1;
+      pointer-events: all; /* Allows the overlay to block interactions when visible */
+    }
+
+
+
+
+    .swiper-container {
+      transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+      opacity: 0;
+      visibility: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .swiper-container.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+    .swiper-wrapper {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      max-width: 80vw;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    img {
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+
+    .thumbnail {
+      -webkit-tap-highlight-color: transparent;
+      height: 20vh;
+      width: auto;
+      cursor: pointer;
+      box-shadow: 4px 4px 2px #888888;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      padding: 40px;
+      color: black !important;
+    }
+    .swiper-pagination {
+      line-height: 20px; 
+    }
+
+    .swiper-pagination-bullet {
+       background: white !important;
+       width: 20px; 
+       height: 20px;
+    }
+    .swiper-pagination-bullet {
+      background: white !important;
+    }
+    
+    /* Hide the arrows on mobile devices */
+    @media (max-width: 1100px) {
+      body, table, td, tr, div, p, pre, h1, h3, h4, h5, ul, {
+          font-size: 12px;
+          font-weight:150
+      }
+  
+      h1 { font-size: 16px; }
+      h2 { font-size: 15px; }
+      h3 { font-size: 13px; }
+      h4 { font-size: 11px; }
+      h5 { font-size: 9px;  }
+      h6 { font-size: 27px; }
+      a {
+          font-size: 16px;
+          font-weight: 300;
+      }
+      
+      .content-wrapper {
+        max-width: 100vw;  /* You can adjust this value */
+        margin: 0 auto;  /* Center the content */
+
+      }
+      .swiper-button-next, .swiper-button-prev {
+        display: none;
+      }
+      .thumbnail {
+        width: 32vw;
+        height: auto;
+
+      }
+
+      body {
+          margin: 0;
+          padding: 0;
+      }
+
+
+      
+      H2 {
+        font-weight: 200;
+        /*font-size: 15px;
+        padding-left: 0%; 
+        padding-right: 0%;
+
+        margin-left: 0;
+        margin-right: 0;        
+        */
+        text-align: left; 
+
+      }
+      .thumbnail-block span {
+        position: absolute;
+        /* top: -20px; */
+        bottom: 102%;
+        left: 50%;
+        width: 105%;
+        transform: translateX(-50%);
+        color: #000;
+        font-size: 14px; 
+        font-weight:190
+
+      }
+      /*.swiper-container.open {
+        opacity: 1;
+        visibility: visible;
+        height: 100%; 
+        overflow: hidden
+      }*/
+      .swiper-pagination {
+        line-height: 15px; 
+      }
+
+      .swiper-pagination-bullet {
+         width: 15px; 
+         height: 15px;
+      }
+      .mobile-text-padding {
+        padding-left: 0%; 
+        padding-right: 0%;
+        margin-left: 0;
+        margin-right: 0;
+        
+      }    
+      body.blur #overlay {
+        background-color: rgba(0,0,0,0.6);
+        backdrop-filter: blur(1px);
+        opacity: 1;
+        pointer-events: all; /* Allows the overlay to block interactions when visible */
+      }
+    }
+
+
+  
+  </style>
+</head>
+
+<body>
+<div id="overlay"></div>
+
+<div class="content-wrapper">
+  <BODY style="margin: 0">
+  <!--  Hier Mann Mitte-->
+  <br>
+  <div align="center"><img src="images/mann.gif" width="96" height="100" alt=""></div>
+
+  <!--  Speicher fuer Sprachabfrage -->
+  <table id="Speicher"></table>
+
+  <!-- Tabelle mit Inhalt-->
+  <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center" summary="alles">
+  <tr><td width="90%">
+
+
+  <div align="center">
+  <p><br>
+
+  <!--  Speicher fuer Sprachabfrage -->
+  <table id="Speicher"></table>
+
+  <!-- Tabelle mit Inhalt-->
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" summary="alles">
+  <tr><td width="100%">
+
+
+  <div align="center">
+  <p><br>
+
+  <a href="#Zeichnungen">Drawings</a> ::: <a href="#Malerei">Paintings</a> ::: <a href="#Installationen">Exhibitions/Installations</a> :::
+  <a href="#Kunstmiete">Rent Art</a> ::: <a href="#Links">Links</a> ::: <a href="#Impressum">Imprint</a> ::: <a href="index.html">German</a></p>
+
+  <BR>
+
+  <h6><a name="Anfang"></a>Marie Anne Jakob</h6>
+
+  </div>
+
+<H2 align="justify">The Hamburg living artist concerns herself with traditional modes of perception in our society. Her work is about searching for a new kind of spatiality, i.e. a new perception of space, time and position.&nbsp;
+</h2>
+<H2 align="justify">Human figures, animals, symbols and additional text move about in her work in an undefined space, defying orientation. They evade common and accepted categorization and undermine social and art-historical terms, thus creating room for new ways of thinking.&nbsp;
+</h2>
+<H2 align="justify">For Marie Anne Jakob technique, mode of rendition and presentation always follow the subject at hand. Her primary modes of expression are painting and drawing, while often using those as elements of installations as well.&nbsp;
+</h2>
+
+<BR>
+<a name="Zeichnungen"></a><h1>Drawings / Collages</h1>
+
+
+
+
+  <div align="center">
+
+  
+  <div class="thumbnail-container">
+    <div class="thumbnail-block">
+      <span>Serie 1</span>
+      <img class="thumbnail" id="thumbnail1" src="zng1/001.jpg" alt="Thumbnail 1" onclick="openGallery(event, gallery1)">
+      <script>
+        var gallery1 = ["zng1/001.jpg","zng1/002.jpg","zng1/003.jpg","zng1/004.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Serie 2</span>
+      <img class="thumbnail" id="thumbnail2" src="zng2/001.jpg" alt="Thumbnail 2" onclick="openGallery(event, gallery2)">
+      <script>
+        var gallery2 = ["zng2/001.jpg","zng2/002.jpg","zng2/003.jpg","zng2/004.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Serie 3</span>
+      <img class="thumbnail" id="thumbnail3" src="zng3/001.jpg" alt="Thumbnail 3" onclick="openGallery(event, gallery3)">
+      <script>
+        var gallery3 = ["zng3/001.jpg","zng3/002.jpg","zng3/003.jpg","zng3/004.jpg","zng3/005.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Serie 4</span>
+      <img class="thumbnail" id="thumbnail4" src="zng4/001.jpg" alt="Thumbnail 4" onclick="openGallery(event, gallery4)">
+      <script>
+        var gallery4 = ["zng4/001.jpg","zng4/002.jpg","zng4/003.jpg","zng4/004.jpg","zng4/005.jpg","zng4/006.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Serie 5</span>
+      <img class="thumbnail" id="thumbnail5" src="zng5/001.jpg" alt="Thumbnail 5" onclick="openGallery(event, gallery5)">
+      <script>
+        var gallery5 = ["zng5/001.jpg","zng5/002.jpg","zng5/003.jpg","zng5/004.jpg","zng5/005.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Serie 6</span>
+      <img class="thumbnail" id="thumbnail6" src="zng6/001.jpg" alt="Thumbnail 6" onclick="openGallery(event, gallery6)">
+      <script>
+        var gallery6 = ["zng6/001.jpg","zng6/002.jpg","zng6/003.jpg","zng6/004.jpg","zng6/005.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Serie 7</span>
+      <img class="thumbnail" id="thumbnail7" src="zng7/001.jpg" alt="Thumbnail 7" onclick="openGallery(event, gallery7)">
+      <script>
+        var gallery7 = ["zng7/001.jpg","zng7/002.jpg","zng7/003.jpg","zng7/004.jpg","zng7/005.jpg"];
+      </script>
+    </div>
+  </div>
+</div>
+  <BR>
+  <a name="Malerei"></a><h1>Oil on canvas</h1>
+
+  <div align="center">
+
+  
+  <div class="thumbnail-container">
+    <div class="thumbnail-block">
+      <span>Zyklus 5 Figuren</span>
+      <img class="thumbnail" id="thumbnail1" src="oel1/001.jpg" alt="Thumbnail 1" onclick="openGallery(event, malerei1)">
+      <script>
+        var malerei1 = ["oel1/001.jpg","oel1/002.jpg","oel1/003.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+        <span>Zyklus 7 Figuren Symbole</span>
+        <img class="thumbnail" id="thumbnail2" src="oel2/001.jpg" alt="Thumbnail 2" onclick="openGallery(event, malerei2)">
+        <script>
+          var malerei2 = ["oel2/001.jpg","oel2/002.jpg","oel2/003.jpg","oel2/004.jpg"];
+        </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Zyklus 8 Raum Zeit Ort</span>
+      <img class="thumbnail" id="thumbnail3" src="oel3/001-517x828.jpg" alt="Thumbnail 3" onclick="openGallery(event, malerei3)">
+      <script>
+        var malerei3 = ["oel3/001.jpg","oel3/002.jpg","oel3/003.jpg","oel3/004.jpg","oel3/005.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Zyklus 10 Space Time Continuum</span>
+      <img class="thumbnail" id="thumbnail4" src="oel4/202-517x828.jpg" alt="Thumbnail 4" onclick="openGallery(event, malerei4)">
+      <script>
+        var malerei4 = ["oel4/202-517x828.jpg","oel4/001.jpg","oel4/002.jpg","oel4/003.jpg","oel4/004.jpg","oel4/005.jpg","oel4/006.jpg"];
+      </script>
+    </div>
+  </div>
+</div>
+ <div align="left">
+  <a name="Installationen"></a><h1>Installations</h1>
+  </div>
+
+  <div>
+      <H2 align="justify">
+The installations seem harmless, but guard against a mild criticism of civilization. In this staging the world seems to be in order, but it is "not like this, but different". Motion detectors are an expression of a planned procedure that is used for surveillance. Despite worlds of technology, perfect bureaucratic planning and state controls, family relationships turn out to be the Individuals and nature more and more off track. The painter has found graphic criteria for the constant change in life constants: In addition to the relief symbols, the same are painted as contours - carvings from prehistoric times. In the rock paintings, our ancestors immortalized the beings and the most important for their existence Actions.      </h2>
+  </div>
+    <div align="center">
+    <div class="thumbnail-container">
+    <div class="thumbnail-block">
+      <span>Gm&uuml;nd &Ouml;sterreich</span>
+      <img class="thumbnail" src="images/gmuend1.jpg" alt="Installation 1" onclick="openGallery(event, installationen, 0)">
+    </div>
+    <div class="thumbnail-block">
+      <span>Kunsthalle Hamburg</span>
+      <img class="thumbnail" src="images/KunsthHamburg.jpg" alt="Installationen 2" onclick="openGallery(event, installationen, 1)">
+    </div>
+    <div class="thumbnail-block">
+      <span>Kunsthaus Hamburg</span>
+      <img class="thumbnail" src="images/MehrZellig1.jpg" alt="Installation 3" onclick="openGallery(event, installationen, 2)">
+    </div>
+    <div class="thumbnail-block">
+      <span>Westwerk Hamburg</span>
+      <img class="thumbnail" src="images/shift.jpg" alt="Installation 4" onclick="openGallery(event, installationen, 3)">
+    </div>
+    <script>
+      var installationen = ["images/gmuend1.jpg","images/KunsthHamburg.jpg","images/MehrZellig1.jpg","images/shift.jpg"];
+    </script>
+  </div>
+
+<BR><BR>
+ <div align="left">
+  <a name="Wiesen einer Kindheit"></a><h1>Meadow of Childhood</h1>
+  </div>
+
+  <div>
+    <H2 align="justify">The appearance of nature changes constantly: Animals, plants and microbes are wheels within wheels, the gears of a vast, complicated but nonetheless beautiful ecological engine of planetary size. Variety and variability of living organisms signify the stability and healthiness of any eco-system. If the reciprocity and flow of change within in this system is being disturbed, even destroyed, only very few animal- and plant life forms may survive and keep evolving.
+    </h2>
+    <H2 align="justify">Mounted eye level on the wall are four hanging cabinets, each carrying 6 tableaus showing different species of plants (55x40 cm, oil on canvas), arranged according to the colour of their blossoms: blue, red, white and yellow. The cabinets are divided into 6 compartments, each 6 centimetres in width. Every compartment contains one tableau which the beholder may slide out in order to look at them.
+    </h2>
+  </div>
+    <div align="center">
+    <div class="thumbnail-container">
+    <div class="thumbnail-block">
+      <span>Weiße Pflanzen</span>
+      <img class="thumbnail" id="thumbnail1" src="tafeln/tafel01.jpg" alt="Thumbnail 1" onclick="openGallery(event, white)">
+      <script>
+        var white = ["tafeln/tafel01.jpg","tafeln/tafel02.jpg","tafeln/tafel03.jpg","tafeln/tafel04.jpg","tafeln/tafel05.jpg","tafeln/tafel06.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Blaue Pflanzen</span>
+      <img class="thumbnail" id="thumbnail2" src="tafeln/tafel07.jpg" alt="Thumbnail 2" onclick="openGallery(event, blue)">
+      <script>
+        var blue = ["tafeln/tafel07.jpg","tafeln/tafel08.jpg","tafeln/tafel09.jpg","tafeln/tafel10.jpg","tafeln/tafel11.jpg","tafeln/tafel12.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Rote Pflanzen</span>
+      <img class="thumbnail" id="thumbnail3" src="tafeln/tafel13.jpg" alt="Thumbnail 3" onclick="openGallery(event, red)">
+      <script>
+        var red = ["tafeln/tafel13.jpg","tafeln/tafel14.jpg","tafeln/tafel15.jpg","tafeln/tafel16.jpg","tafeln/tafel17.jpg","tafeln/tafel18.jpg"];
+      </script>
+    </div>
+    <div class="thumbnail-block">
+      <span>Gelbe Pflanzen</span>
+      <img class="thumbnail" id="thumbnail4" src="tafeln/tafel19.jpg" alt="Thumbnail 4" onclick="openGallery(event, yellow)">
+      <script>
+        var yellow = ["tafeln/tafel19.jpg","tafeln/tafel20.jpg","tafeln/tafel21.jpg","tafeln/tafel22.jpg","tafeln/tafel23.jpg","tafeln/tafel24.jpg"];
+      </script>
+    </div>
+  </div>
+
+<BR><BR>
+<div align="left">
+<a name="Kunstmiete"></a><h1>Art Rental</h1>
+</div>
+
+<div>
+    <H2 align="justify">We rent artwork to large and small clients to improve spaces in offices, businesses and homes. Art sets a positive statement and improves the atmosphere in any professional space. It reflects your values and philosophy and impresses your clients. It boosts your image, and motivates your staff.
+    </h2>
+    <H2 align="justify">Art rental is a fast growing trend, not least because of its economical advantages: it provides the flexibility to display and change art without significant up-front costs, and monthly payments are affordable and tax-efficient. Most importantly, it makes dull and empty walls a thing of the past!
+    </h2>
+</div>
+<div align="center">
+  <div class="thumbnail-container">
+    <div class="thumbnail-block">
+      <span>B&uuml;ro Hamburg</span>
+      <img class="thumbnail" src="images/Bildermiete_2.jpg" alt="Installation 1" onclick="openGallery(event, kunstmiete, 0)">
+    </div>
+    <div class="thumbnail-block">
+      <span>B&uuml;ro Berlin</span>
+      <img class="thumbnail" src="images/Bildermiete_SAP.jpg" alt="Installationen 2" onclick="openGallery(event, kunstmiete, 1)">
+    </div>
+    <div class="thumbnail-block">
+      <span>B&uuml;ro M&uuml;nchen</span>
+      <img class="thumbnail" src="images/Bildermiete_3.jpg" alt="Installation 3" onclick="openGallery(event, kunstmiete, 2)">
+    </div>
+    <script>
+      var kunstmiete = ["images/Bildermiete_2.jpg","images/Bildermiete_SAP.jpg","images/Bildermiete_3.jpg"];
+    </script>
+  </div>
+
+<BR><BR><BR><BR><BR><BR>
+
+<hr noshade width="100%" size="2" align="center">
+<a name="Links"></a><h1>Link</h1>
+<a href="https://www.singulart.com/de/k%C3%BCnstler/marie-anne-jakob-7679">Link to SINGULART Art portal</a>
+<BR><BR><BR><BR>
+<a name="Impressum"></a><h1>Imprint
+<p>&copy; 2021 by Marie Anne Jakob / All rights reserved&nbsp;</p>
+<p>According to &sect; 5 TMG</p><p>Responsible: </strong> <br>Marie Anne Jakob<br>
+Kreuzgasse 15 A<br>A-6800 Feldkirch<br>
+</p><p><strong>Contact:</strong> <br>
+Phone: +49 179 39 111 04<br>
+E-Mail: <a href='mailto:M@MAJakob.de'>M@MAJakob.de</a></br></p>
+
+</p><p><strong>Privacy:</strong><br>
+Frank Jakob<br></p><p><strong>Disclaimer of liability:</strong><br>
+  My site contains links to external websites over whose content I have no influence. Therefore, I cannot accept any liability for this third-party content. The respective provider or operator of the pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time they were linked. No illegal content was found at the time of linking. A permanent control of the content of the linked pages is not reasonable without concrete evidence of a violation of the law. As soon as we become aware of legal violations, we will remove such links immediately.
+<br>
+<br>
+<strong>Copyright:</strong><br>The content and works on these pages created by the website operator are subject to German copyright law. The reproduction, processing, distribution and any kind of exploitation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this website are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are observed. In particular contents of third parties are marked as such. Should you nevertheless become aware of a copyright infringement, we would ask you to notify us accordingly. If we become aware of legal violations, we will remove such content immediately.
+</p><br>
+</div>
+
+
+
+
+
+
+  <div class="swiper-container" id="swiper-container" onclick="closeGallery()">
+    <div class="swiper-wrapper"></div>
+    <div class="swiper-pagination" onclick="event.stopPropagation()"></div>
+    <div class="swiper-button-next" onclick="event.stopPropagation()"></div>
+    <div class="swiper-button-prev" onclick="event.stopPropagation()"></div>
+  </div>
+
+
+
+
+
+  
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+
+    var swiper = new Swiper('#swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: false,
+      centeredSlides: true,
+      slidesOffsetBefore: 0,
+      slidesOffsetAfter: 0,
+      keyboard: { enabled: true, onlyInViewport: true }, // add this line      
+      mousewheel: { invert: false },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      
+
+    });
+    if (window.innerWidth <= 1100) {
+      let metaViewport = document.querySelector('meta[name=viewport]');
+      metaViewport.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
+    }
+        
+    var thumbnailRect;
+    
+    function openGallery(event, gallery, startSlide) {
+      event.preventDefault();
+    
+      const clickedThumbnail = event.currentTarget;
+      thumbnailRect = clickedThumbnail.getBoundingClientRect();
+    
+      const swiperContainer = document.getElementById('swiper-container');
+    
+      // Set the initial position and size of the swiper container to match the thumbnail
+      swiperContainer.style.position = 'fixed';
+      swiperContainer.style.top = `${thumbnailRect.top}px`;
+      swiperContainer.style.left = `${thumbnailRect.left}px`;
+      swiperContainer.style.width = `${thumbnailRect.width}px`;
+      swiperContainer.style.height = `${thumbnailRect.height}px`;
+    
+      // Show the swiper container without animation
+      swiperContainer.style.transition = 'none';
+      swiperContainer.classList.add('open');
+    
+      // Trigger a reflow to apply the initial transformation before animating
+      void swiperContainer.offsetWidth;
+    
+      // Restore the transition and animate to the normal position and size
+      swiperContainer.style.transition = 'all 0.4s ease-in-out';
+      swiperContainer.style.top = '0';
+      swiperContainer.style.left = '0';
+      swiperContainer.style.width = '100%';
+      swiperContainer.style.height = '100%';
+    
+      document.body.classList.add('blur');
+      document.body.style.overflow = 'hidden';
+      if (window.innerWidth <= 1100) {
+        document.body.style.position = 'fixed';
+      }
+    
+      swiper.removeAllSlides();
+    
+      for (var i = 0; i < gallery.length; i++) {
+        var slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        var img = document.createElement('img');
+        img.src = gallery[i];
+        slide.appendChild(img);
+        swiper.appendSlide(slide);
+      }
+    
+      if (startSlide) {
+        swiper.slideTo(startSlide, 0);
+      }
+    }
+    
+    function closeGallery() {
+      const swiperContainer = document.getElementById('swiper-container');
+    
+      // Function to handle the transition end and cleanup
+      function onTransitionEnd() {
+        swiperContainer.classList.remove('open');
+        document.body.classList.remove('blur');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+    
+        // Reset styles
+        swiperContainer.style.transition = '';
+        swiperContainer.style.top = '';
+        swiperContainer.style.left = '';
+        swiperContainer.style.width = '';
+        swiperContainer.style.height = '';
+    
+        swiperContainer.removeEventListener('transitionend', onTransitionEnd);
+      }
+    
+      // Set the final thumbnail's dimensions and position
+      swiperContainer.style.top = `${thumbnailRect.top}px`;
+      swiperContainer.style.left = `${thumbnailRect.left}px`;
+      swiperContainer.style.width = `${thumbnailRect.width}px`;
+      swiperContainer.style.height = `${thumbnailRect.height}px`;
+      
+      overlay.style.transitionDuration = '0.1s'; // Adjust this value as needed
+      // Add a transition end event listener
+      swiperContainer.addEventListener('transitionend', onTransitionEnd);
+    
+      // Start the animation
+      swiperContainer.style.transition = 'all 0.4s ease-in-out';
+    }
+    
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeGallery();
+      }
+    });
+
+
+  </script>
+
+  
+</div>
+</body>
+</html>
