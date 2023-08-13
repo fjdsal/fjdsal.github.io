@@ -99,7 +99,7 @@
       background-color: rgba(0,0,0,0);
       backdrop-filter: blur(0px);
       opacity: 0;
-      transition: background-color 0.7s, backdrop-filter 0.7s, opacity 0.7s;
+      transition: background-color 0.1s, backdrop-filter 0.1s, opacity 0.1s;
       pointer-events: none; /* Ensures that the overlay does not block interactions when hidden */
     }
     
@@ -271,6 +271,12 @@
         margin-right: 0;
         
       }    
+      body.blur #overlay {
+        background-color: rgba(0,0,0,0.6);
+        backdrop-filter: blur(2px);
+        opacity: 1;
+        pointer-events: all; /* Allows the overlay to block interactions when visible */
+      }
     }
 
 
