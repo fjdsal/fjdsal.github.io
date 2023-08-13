@@ -436,19 +436,19 @@
     <div class="thumbnail-container">
     <div class="thumbnail-block">
       <span>Gm&uuml;nd &Ouml;sterreich</span>
-      <img class="thumbnail" src="images/gmuend1.jpg" alt="Installation 1" onclick="openGallery(event, installationen, 1)">
+      <img class="thumbnail" src="images/gmuend1.jpg" alt="Installation 1" onclick="openGallery(event, installationen, 0)">
     </div>
     <div class="thumbnail-block">
       <span>Kunsthalle Hamburg</span>
-      <img class="thumbnail" src="images/KunsthHamburg.jpg" alt="Installationen 2" onclick="openGallery(event, installationen, 2)">
+      <img class="thumbnail" src="images/KunsthHamburg.jpg" alt="Installationen 2" onclick="openGallery(event, installationen, 1)">
     </div>
     <div class="thumbnail-block">
       <span>Kunsthaus Hamburg</span>
-      <img class="thumbnail" src="images/MehrZellig1.jpg" alt="Installation 3" onclick="openGallery(event, installationen, 3)">
+      <img class="thumbnail" src="images/MehrZellig1.jpg" alt="Installation 3" onclick="openGallery(event, installationen, 2)">
     </div>
     <div class="thumbnail-block">
       <span>Westwerk Hamburg</span>
-      <img class="thumbnail" src="images/shift.jpg" alt="Installation 4" onclick="openGallery(event, installationen, 4)">
+      <img class="thumbnail" src="images/shift.jpg" alt="Installation 4" onclick="openGallery(event, installationen, 3)">
     </div>
     <script>
       var installationen = ["images/gmuend1.jpg","images/KunsthHamburg.jpg","images/MehrZellig1.jpg","images/shift.jpg"];
@@ -514,15 +514,15 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
   <div class="thumbnail-container">
     <div class="thumbnail-block">
       <span>B&uuml;ro Hamburg</span>
-      <img class="thumbnail" src="images/Bildermiete_2.jpg" alt="Installation 1" onclick="openGallery(event, kunstmiete, 0)">
+      <img class="thumbnail" src="images/Bildermiete_2.jpg" alt="Installation 1" onclick="openGallery(kunstmiete, 0)">
     </div>
     <div class="thumbnail-block">
       <span>B&uuml;ro Berlin</span>
-      <img class="thumbnail" src="images/Bildermiete_SAP.jpg" alt="Installationen 2" onclick="openGallery(event, kunstmiete, 1)">
+      <img class="thumbnail" src="images/Bildermiete_SAP.jpg" alt="Installationen 2" onclick="openGallery(kunstmiete, 1)">
     </div>
     <div class="thumbnail-block">
       <span>B&uuml;ro M&uuml;nchen</span>
-      <img class="thumbnail" src="images/Bildermiete_3.jpg" alt="Installation 3" onclick="openGallery(event, kunstmiete, 2)">
+      <img class="thumbnail" src="images/Bildermiete_3.jpg" alt="Installation 3" onclick="openGallery(kunstmiete, 2)">
     </div>
     <script>
       var kunstmiete = ["images/Bildermiete_2.jpg","images/Bildermiete_SAP.jpg","images/Bildermiete_3.jpg"];
@@ -616,7 +616,7 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     }
     
     //let scrollYAtGalleryOpen = 0;
-    function openGallery(gallery, startSlide) {
+    function openGallery(event, gallery, startSlide) {
         event.preventDefault();
 
         const clickedThumbnail = event.currentTarget; // Use currentTarget to get the div
@@ -671,11 +671,6 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       if (event.key === 'Escape') {
         closeGallery();
       }
-    }
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-          closeGallery();
-        }
     });
     function closeGallery() {
         const swiperContainer = document.getElementById('swiper-container');
