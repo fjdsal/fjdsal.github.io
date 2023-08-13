@@ -680,26 +680,24 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     function closeGallery() {
         const swiperContainer = document.getElementById('swiper-container');
         
-        // Set the thumbnail's dimensions and position without animation
-        swiperContainer.style.transition = 'none';
+        // Set the final thumbnail's dimensions and position
         swiperContainer.style.top = `${thumbnailRect.top}px`;
         swiperContainer.style.left = `${thumbnailRect.left}px`;
         swiperContainer.style.width = `${thumbnailRect.width}px`;
         swiperContainer.style.height = `${thumbnailRect.height}px`;
-    
-        // Trigger a reflow to apply the transformation before animating
-        void swiperContainer.offsetWidth;
-    
-        // Restore the transition and animate back to the thumbnail size and position
-        swiperContainer.style.transition = 'all 0.4s ease-in-out';
-        swiperContainer.style.opacity = '0';
-    
-        setTimeout(() => {
+      
+        // Add a transition end event listener to remove the 'open' class once the transition is done
+        swiperContainer.addEventListener('transitionend', function() {
           swiperContainer.classList.remove('open');
           document.body.classList.remove('blur');
           document.body.style.overflow = '';  // Restore body scrolling
           document.body.style.position = '';
-        }, 400); // Match the 0.4s transition duration
+          swiperContainer.style.opacity = '0'; // Match the opacity in the .swiper-container class
+        }, { once: true }); // Remove the event listener after it's been called
+      
+        // Start the animation
+        swiperContainer.style.transition = 'all 0.4s ease-in-out';
+        swiperContainer.style.opacity = '0'; // Animate opacity
 
     }
 
