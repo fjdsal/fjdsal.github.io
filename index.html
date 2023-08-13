@@ -599,11 +599,8 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     
       const swiperContainer = document.getElementById('swiper-container');
     
-      // Set the transformation origin to the center of the clicked thumbnail
-      swiperContainer.style.transformOrigin = `${thumbnailRect.left + thumbnailRect.width / 2}px ${thumbnailRect.top + thumbnailRect.height / 2}px`;
-    
-      // Set the initial scale based on the thumbnail's size
-      swiperContainer.style.transform = `scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
+      // Set the initial position and scale of the swiper container to match the thumbnail
+      swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
     
       // Show the swiper container without animation
       swiperContainer.style.transition = 'none';
@@ -613,8 +610,8 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
       void swiperContainer.offsetWidth;
     
       // Restore the transition and animate to the normal position and size
-      swiperContainer.style.transition = 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out';
-      swiperContainer.style.transform = 'scale(1, 1)';
+      swiperContainer.style.transition = 'transform 0.4s ease-in-out';
+      swiperContainer.style.transform = 'translate(0, 0) scale(1, 1)';
     
       document.body.classList.add('blur');
       document.body.style.overflow = 'hidden';
@@ -650,25 +647,19 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
     
         // Reset styles
         swiperContainer.style.transition = '';
-        swiperContainer.style.opacity = '';
         swiperContainer.style.transform = '';
-        swiperContainer.style.transformOrigin = '';
     
         swiperContainer.removeEventListener('transitionend', onTransitionEnd);
       }
     
-      // Set the transformation origin to the center of the clicked thumbnail
-      swiperContainer.style.transformOrigin = `${thumbnailRect.left + thumbnailRect.width / 2}px ${thumbnailRect.top + thumbnailRect.height / 2}px`;
-    
-      // Set the final scale based on the thumbnail's size
-      swiperContainer.style.transform = `scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
+      // Set the final thumbnail's dimensions and position using transform
+      swiperContainer.style.transform = `translate(${thumbnailRect.left}px, ${thumbnailRect.top}px) scale(${thumbnailRect.width / window.innerWidth}, ${thumbnailRect.height / window.innerHeight})`;
     
       // Add a transition end event listener
       swiperContainer.addEventListener('transitionend', onTransitionEnd);
     
       // Start the animation
-      swiperContainer.style.transition = 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out';
-      swiperContainer.style.opacity = '0';
+      swiperContainer.style.transition = 'transform 0.4s ease-in-out';
     }
     
     document.addEventListener('keydown', function (event) {
@@ -676,6 +667,7 @@ Verschiedenartigkeit und Ver&auml;nderlichkeit lebender Organismen kennzeichnen 
         closeGallery();
       }
     });
+
 
 
 
