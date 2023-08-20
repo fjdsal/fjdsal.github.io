@@ -1,4 +1,5 @@
 
+
     var swiper = new Swiper('#swiper-container', {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -25,6 +26,7 @@
     }
         
     var thumbnailRect;
+    
     function openGallery(event, gallery, startSlide) {
       event.preventDefault();
     
@@ -39,15 +41,6 @@
       swiperContainer.style.left = `${thumbnailRect.left}px`;
       swiperContainer.style.width = `${thumbnailRect.width}px`;
       swiperContainer.style.height = `${thumbnailRect.height}px`;
-    
-      // Set the initial image (thumbnail)
-      swiper.removeAllSlides();
-      var slide = document.createElement('div');
-      slide.className = 'swiper-slide';
-      var img = document.createElement('img');
-      img.src = gallery[startSlide || 0]; // Use the startSlide or the first image
-      slide.appendChild(img);
-      swiper.appendSlide(slide);
     
       // Show the swiper container without animation
       swiperContainer.style.transition = 'none';
@@ -69,30 +62,21 @@
         document.body.style.position = 'fixed';
       }
     
-      // Update the swiper with the rest of the images after the animation has finished
-      swiperContainer.addEventListener('transitionend', function onTransitionEnd() {
-        swiper.removeAllSlides();
+      swiper.removeAllSlides();
     
-        for (var i = 0; i < gallery.length; i++) {
-          var slide = document.createElement('div');
-          slide.className = 'swiper-slide';
-          var img = document.createElement('img');
-          img.src = gallery[i];
-          slide.appendChild(img);
-          swiper.appendSlide(slide);
-        }
+      for (var i = 0; i < gallery.length; i++) {
+        var slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        var img = document.createElement('img');
+        img.src = gallery[i];
+        slide.appendChild(img);
+        swiper.appendSlide(slide);
+      }
     
-        if (startSlide) {
-          swiper.slideTo(startSlide, 0);
-        }
-    
-        swiperContainer.removeEventListener('transitionend', onTransitionEnd);
-      });
+      if (startSlide) {
+        swiper.slideTo(startSlide, 0);
+      }
     }
-    
-    // Rest of the code remains the same
-
-
     
     function closeGallery() {
       const swiperContainer = document.getElementById('swiper-container');
@@ -119,8 +103,7 @@
       swiperContainer.style.left = `${thumbnailRect.left}px`;
       swiperContainer.style.width = `${thumbnailRect.width}px`;
       swiperContainer.style.height = `${thumbnailRect.height}px`;
-      
-      overlay.style.transitionDuration = '0.4s'; // Adjust this value as needed
+    
       // Add a transition end event listener
       swiperContainer.addEventListener('transitionend', onTransitionEnd);
     
@@ -133,3 +116,10 @@
         closeGallery();
       }
     });
+
+
+
+
+
+
+  
