@@ -117,12 +117,13 @@
           <a name="Malerei"></a>
           <h1>&Ouml;l auf Leinwand</h1>
           <div align="center">
-            <div class="thumbnail-container">
+            <div class="thumbnail-container">    <!-- startet den thumbnail Block, wo man unter dem Text die kleineren Fotos sind --> 
               <div class="thumbnail-block">
-                <span>Zyklus 5 Figuren</span>
-                <img class="thumbnail" id="thumbnail1" src="oel1/001.jpg" alt="Thumbnail 1" onclick="openGallery(event, malerei1)">
+                <span>Zyklus 5 Figuren</span>    <!-- Beschriftung des Fotos -->
+                <img class="thumbnail" id="thumbnail1" src="oel1/001.jpg" alt="Thumbnail 1" onclick="openGallery(event, malerei1)">  <!-- "event" ist ein Detail damit die Animation funktioniert, muss man schreiben,
+                                                                                                                                          "malerei1" ist der Name von dem Array wo die Pfade der Bilder stehen --> 
                 <script>
-                  var malerei1 = ["oel1/001.jpg","oel1/002.jpg","oel1/003.jpg"];
+                  var malerei1 = ["oel1/001.jpg","oel1/002.jpg","oel1/003.jpg"]; //  <!-- hier die Bilder durch die man Durchwischen kann wenn man ein Thumbnail anklickt -->
                 </script>
               </div>
               <div class="thumbnail-block">
