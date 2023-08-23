@@ -1,13 +1,13 @@
 
 
-    var swiper = new Swiper('#swiper-container', {
+    var swiper = new Swiper('#swiper-container', { // swiper ist das wenn die bilder groß werden und man wischen kann, hier verschiedene optionen
       slidesPerView: 1,
       spaceBetween: 10,
       loop: false,
       centeredSlides: true,
       slidesOffsetBefore: 0,
       slidesOffsetAfter: 0,
-      keyboard: { enabled: true, onlyInViewport: true }, // add this line      
+      keyboard: { enabled: true, onlyInViewport: true },   
       mousewheel: { invert: false },
       pagination: {
         el: '.swiper-pagination',
