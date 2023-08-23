@@ -177,7 +177,7 @@
 
       }
       .swiper-button-next, .swiper-button-prev {
-        display: none;
+        display: none; // damit die pfeile am handy nicht zu sehen sind, die sind nur im weg und man wischt ja eh lieber
       }
       .thumbnail {
         width: 32vw;
