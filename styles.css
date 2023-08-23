@@ -1,225 +1,341 @@
+body,table,td,tr,div,p,pre,h1,h2,h3,h4,h5,ul {
+	font-weight: 100;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
 
-    body,table,td,tr,div,p,pre,h1,h2,h3,h4,h5,ul {
-      font-weight:100; 
-      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    }
-    body,td,div,p,pre,ul {font-weight:100; font-size: 13px;}
+body,
+td,
+div,
+p,
+pre,
+ul {
+	font-weight: 100;
+	font-size: 13px;
+}
 
-    h0 {font-weight:bold; font-size: 30px; color:#FF0000}
-    h1 {font-weight:100; font-size: 18px;}
-    h2 {font-weight:100; font-size: 16px;}
-    h3 {font-weight:100; font-size: 13px;}
-    h4 {font-weight:100; font-size: 11px;}
-    h4 {font-weight:100; font-size: 9px;}
-    h5 {font-weight:100; font-size: 8px;}
-    h6 {font-weight:bold; font-size: 30px; color:#FF0000}
+h0 {
+	font-weight: bold;
+	font-size: 30px;
+	color: #FF0000
+}
 
-    .small {font-size: 12px;}
-    .mini {	font-size: 11px;}
-    .minimini {font-size: 10px;}
+h1 {
+	font-weight: 100;
+	font-size: 18px;
+}
 
-    a {	font-size: 13px; text-decoration: none; font-weight : 100;}
-    a:link {color:#0000FF}
-    a:visited {color:#808080}
-    a:active {color:#00FF00}
-    a:hover{color: #FF0000;}
+h2 {
+	font-weight: 100;
+	font-size: 16px;
+}
 
-    body {background: white}
+h3 {
+	font-weight: 100;
+	font-size: 13px;
+}
 
+h4 {
+	font-weight: 100;
+	font-size: 11px;
+}
 
+h4 {
+	font-weight: 100;
+	font-size: 9px;
+}
 
-  
-    html, body {
-      height: 100%;
-      overflow: auto;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
+h5 {
+	font-weight: 100;
+	font-size: 8px;
+}
 
-    h1 {
-      padding: 20px 0;
-    }
-    .content-wrapper {
-      max-width: 60vw;
-      margin: 0 auto; 
-      padding: 0 20px;  
-    }
+h6 {
+	font-weight: bold;
+	font-size: 30px;
+	color: #FF0000
+}
 
-    .thumbnail-container {
-      display: flex;
-      flex-wrap: wrap; 
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-    }
+.small {
+	font-size: 12px;
+}
 
-    .thumbnail-block {
-      position: relative;
-      margin-top: 30px;
-    }
+.mini {
+	font-size: 11px;
+}
 
-    .thumbnail-block span {
-      position: absolute;
-      bottom: 102%;
-      left: 50%;
-      width: 105%;
-      transform: translateX(-50%);  /* damit die Bildbeschriftung mehr Platz als das Bild hat in der X-Achse */
-      color: #000;
-    }
+.minimini {
+	font-size: 10px;
+}
 
-    body.blur::before {   /*  verschwommener Hintergrund */
-      content: "";
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 999;    /* damit es ganz sicher hinten ist */
-      background-color: rgba(0,0,0,0.6);
-      backdrop-filter: blur(5px);   /* stärke vom verschwommenen, für mobile ist weniger besser aus performance gründen (wird weiter unten gemacht) */
-    }
+a {
+	font-size: 13px;
+	text-decoration: none;
+	font-weight: 100;
+}
 
+a:link {
+	color: #0000FF
+}
 
+a:visited {
+	color: #808080
+}
 
-    .swiper-container {  /* css wenn man ein thumbnail angeklickt hat und die animation beginnt */
-      transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;   /* Animationsgeschwindigkeit */
-      opacity: 0;
-      visibility: hidden;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      padding: 0;
-      margin: 0;
-    }
-    .swiper-container.open {   /* css für den swiper wenn die animation fertig ist, also die großen Fotos */
-      opacity: 1;
-      visibility: visible;
-    }
-    .swiper-wrapper {
-      height: 100%;
-      padding: 0;
-      margin: 0;
-    }
+a:active {
+	color: #00FF00
+}
 
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    .swiper-slide img {
-      width: 100%;
-      height: 100%;
-      max-width: 80vw;
-      max-height: 80vh;
-      object-fit: contain;
-    }
-    img {  /*  80% der bildschirmgröße */
-      max-width: 80vw;  
-      max-height: 80vh;
-    }
+a:hover {
+	color: #FF0000;
+}
 
-    .thumbnail {
-      -webkit-tap-highlight-color: transparent;  /* wenn man bei handys in chrome und safari auf thumbnails tippt, werden sie kurz blau. Diese option verhindert das */
-      height: 20vh;
-      width: auto;
-      cursor: pointer;
-      box-shadow: 4px 4px 2px #888888;
-    }
-
-    .swiper-button-next, .swiper-button-prev {
-      padding: 40px;
-      color: black !important;
-    }
-    .swiper-pagination {
-      line-height: 20px; 
-    }
-
-    .swiper-pagination-bullet {
-       background: white !important;
-       width: 20px; 
-       height: 20px;
-    }
-    .swiper-pagination-bullet {
-      background: white !important;
-    }
-    
-    /* Optionen die spezifisch für handys und tablets sind */
-    @media (max-width: 1100px) {
-      body, table, td, tr, div, p, pre, h1, h3, h4, h5, ul, {
-          font-size: 12px;
-          font-weight:150
-      }
-  
-      h1 { font-size: 16px; }
-      h2 { font-size: 15px; }
-      h3 { font-size: 13px; }
-      h4 { font-size: 11px; }
-      h5 { font-size: 9px;  }
-      h6 { font-size: 27px; }
-      a {
-          font-size: 16px;
-          font-weight: 300;
-      }
-      
-      .content-wrapper {
-        max-width: 100vw;  
-        margin: 0 auto;  
-
-      }
-      .swiper-button-next, .swiper-button-prev {
-        display: none; // damit die pfeile am handy nicht zu sehen sind, die sind nur im weg und man wischt ja eh lieber
-      }
-      .thumbnail {
-        width: 32vw;
-        height: auto;
-      }
-
-      body {
-          margin: 0;
-          padding: 0;
-      }
+body {
+	background: white
+}
 
 
-      
-      H2 {
-        font-weight: 200;
-        text-align: left; /* Am Handy ist Blocksatz deaktiviert weil es schwerer zu lesen ist */
-      }
-      .thumbnail-block span {
-        position: absolute;
-        bottom: 102%;
-        left: 50%;
-        width: 105%;
-        transform: translateX(-50%);
-        color: #000;
-        font-size: 14px; 
-        font-weight:190
+html,
+body {
+	height: 100%;
+	overflow: auto;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
 
-      }
+h1 {
+	padding: 20px 0;
+}
 
-      .swiper-pagination {
-        line-height: 15px; 
-      }
+.content-wrapper {
+	max-width: 60vw;
+	margin: 0 auto;
+	padding: 0 20px;
+}
 
-      .swiper-pagination-bullet {
-         width: 15px; 
-         height: 15px;
-      }
-      .mobile-text-padding {
-        padding-left: 0%; 
-        padding-right: 0%;
-        margin-left: 0;
-        margin-right: 0;
-        
-      }    
-    }
+.thumbnail-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.thumbnail-block {
+	position: relative;
+	margin-top: 30px;
+}
+
+.thumbnail-block span {
+	position: absolute;
+	bottom: 102%;
+	left: 50%;
+	width: 105%;
+	transform: translateX(-50%);
+	/* damit die Bildbeschriftung mehr Platz als das Bild hat in der X-Achse */
+	color: #000;
+}
+
+body.blur::before {
+	/*  verschwommener Hintergrund */
+	content: "";
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	/* damit es ganz sicher hinten ist */
+	background-color: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(5px);
+	/* stärke vom verschwommenen, für mobile ist weniger besser aus performance gründen (wird weiter unten gemacht) */
+}
+
+
+.swiper-container {
+	/* css wenn man ein thumbnail angeklickt hat und die animation beginnt */
+	transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+	/* Animationsgeschwindigkeit */
+	opacity: 0;
+	visibility: hidden;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	padding: 0;
+	margin: 0;
+}
+
+.swiper-container.open {
+	/* css für den swiper wenn die animation fertig ist, also die großen Fotos */
+	opacity: 1;
+	visibility: visible;
+}
+
+.swiper-wrapper {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.swiper-slide img {
+	width: 100%;
+	height: 100%;
+	max-width: 80vw;
+	max-height: 80vh;
+	object-fit: contain;
+}
+
+img {
+	/*  80% der bildschirmgröße */
+	max-width: 80vw;
+	max-height: 80vh;
+}
+
+.thumbnail {
+	-webkit-tap-highlight-color: transparent;
+	/* wenn man bei handys in chrome und safari auf thumbnails tippt, werden sie kurz blau. Diese option verhindert das */
+	height: 20vh;
+	width: auto;
+	cursor: pointer;
+	box-shadow: 4px 4px 2px #888888;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+	padding: 40px;
+	color: black !important;
+}
+
+.swiper-pagination {
+	line-height: 20px;
+}
+
+.swiper-pagination-bullet {
+	background: white !important;
+	width: 20px;
+	height: 20px;
+}
+
+.swiper-pagination-bullet {
+	background: white !important;
+}
+
+/* Optionen die spezifisch für handys und tablets sind */
+@media (max-width: 1100px) {
+
+	body,
+	table,
+	td,
+	tr,
+	div,
+	p,
+	pre,
+	h1,
+	h3,
+	h4,
+	h5,
+	ul,
+	{
+	font-size: 12px;
+	font-weight: 150
+}
+
+h1 {
+	font-size: 16px;
+}
+
+h2 {
+	font-size: 15px;
+}
+
+h3 {
+	font-size: 13px;
+}
+
+h4 {
+	font-size: 11px;
+}
+
+h5 {
+	font-size: 9px;
+}
+
+h6 {
+	font-size: 27px;
+}
+
+a {
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.content-wrapper {
+	max-width: 100vw;
+	margin: 0 auto;
+
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+	display: none; // damit die pfeile am handy nicht zu sehen sind, die sind nur im weg und man wischt ja eh lieber
+}
+
+.thumbnail {
+	width: 32vw;
+	height: auto;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+
+H2 {
+	font-weight: 200;
+	text-align: left;
+	/* Am Handy ist Blocksatz deaktiviert weil es schwerer zu lesen ist */
+}
+
+.thumbnail-block span {
+	position: absolute;
+	bottom: 102%;
+	left: 50%;
+	width: 105%;
+	transform: translateX(-50%);
+	color: #000;
+	font-size: 14px;
+	font-weight: 190
+}
+
+.swiper-pagination {
+	line-height: 15px;
+}
+
+.swiper-pagination-bullet {
+	width: 15px;
+	height: 15px;
+}
+
+.mobile-text-padding {
+	padding-left: 0%;
+	padding-right: 0%;
+	margin-left: 0;
+	margin-right: 0;
+}
+}
